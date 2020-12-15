@@ -1,0 +1,22 @@
+name: Fairy
+
+on:
+  schedule:
+  - cron: '0 12 * * *' # every day at noon
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Run commit script
+        run: |
+           git config --global user.name ${GITHUB_ACTOR}
+           git commit --allow-empty -m "Plant grass: `date +'%Y-%m-%d %H:%M:%S'`" 
+           git push origin master
