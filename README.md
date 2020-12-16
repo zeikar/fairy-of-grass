@@ -6,7 +6,8 @@
 
 # How to use
 1. :fork_and_knife: Fork or clone this repository.
-2. :lock: Add your Github email address in Github Secrets. ([Tutorial](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository))
+2. :lock: Add your Github email address in Github Secrets as USER_EMAIL. ([Tutorial](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository))
+
 3. :smile: Done!
 
 # How it works
