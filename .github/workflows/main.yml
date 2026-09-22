@@ -10,9 +10,12 @@ on:
 jobs:
   commit:
     runs-on: ubuntu-latest
+    # Repos created from the template default to a read-only GITHUB_TOKEN
+    permissions:
+      contents: write
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
 
       # Runs a single command using the runners shell
       - name: Run commit script
@@ -20,4 +23,4 @@ jobs:
            git config --global user.name ${GITHUB_ACTOR}
            git config --global user.email ${{ secrets.USER_EMAIL }}
            git commit --allow-empty -m "Plant grass: `date +'%Y-%m-%d %H:%M:%S'`" 
-           git push origin master
+           git push origin HEAD
