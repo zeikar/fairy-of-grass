@@ -23,4 +23,9 @@ jobs:
            git config --global user.name ${GITHUB_ACTOR}
            git config --global user.email ${{ secrets.USER_EMAIL }}
            git commit --allow-empty -m "Plant grass: `date +'%Y-%m-%d %H:%M:%S'`" 
-           git push origin HEAD
+           # GitHub occasionally rejects a push with a transient server error
+           for delay in 0 30 60; do
+             sleep $delay
+             git push origin HEAD && exit 0
+           done
+           exit 1
